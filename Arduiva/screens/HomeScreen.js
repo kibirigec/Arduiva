@@ -9,7 +9,7 @@ import { faTruckLoading } from '@fortawesome/free-solid-svg-icons';
 
 const HomeScreen = () => {
     const name = 'Calvin'; // Define the name variable( i put it here temporarily to see my name on an app)
-    const currentLocation = 'Kyanja, Uganda'
+    const currentLocation = 'Kyanja, Uganda.'
 
     function hasPressed(){
         console.log('pressed')
