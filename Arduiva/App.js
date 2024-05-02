@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/HomeScreen';
 import ActivityPage from './screens/ActivityPage';
 import ServicesPage from './screens/ServicesPage';
-//import EPayPage from './screens/EPayPage';
+//import EPayPage from './screens/EPayPage'; for some reason this page has refused to load
 import ProfilePage from './screens/ProfilePage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFonts, PTSans_400Regular, PTSans_400Regular_Italic, PTSans_700Bold, PTSans_700Bold_Italic } from '@expo-google-fonts/pt-sans';
@@ -20,8 +20,7 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    // You can return a loading indicator or null while the fonts are loading
-    return null;
+//    i'm blaz here, but i put this here incase the fonts don't work
   }
 
   return (
@@ -42,7 +41,9 @@ export default function App() {
         {/* <Tab.Screen name="EPay" component={EPayPage} options={{
             tabBarLabel: 'EPay',
             tabBarIcon: () => <Ionicons name="card" size={20} color="#161818" />
-        }}/> */}
+        }}/> 
+        This is the epay page, it has refused to load, man we'll fix it later on
+        */}
         <Tab.Screen name="Profile" component={ProfilePage} options={{
             tabBarLabel: 'Profile',
             tabBarIcon: () => <Ionicons name="person" size={20} color="#161818" />
