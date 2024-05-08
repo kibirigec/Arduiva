@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/HomeScreen';
@@ -10,9 +11,11 @@ import EPayPage from './screens/EPayPage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 
+
+
 export default function App() {
   const Tab = createBottomTabNavigator();
-  
+
 
   const [loaded] = useFonts({
     'Asap-Bold': require('./assets/fonts/Asap-Bold.ttf'),
@@ -23,6 +26,7 @@ export default function App() {
     'Asap-MediumItalic': require('./assets/fonts/Asap-MediumItalic.ttf'),
     'PTMono-Regular': require('./assets/fonts/PTMono-Regular.ttf'),
   });
+
   if (!loaded) {
     return null; // Render null while fonts are loading
   }
@@ -33,31 +37,31 @@ export default function App() {
       <NavigationContainer>
         <Tab.Navigator
           initialRouteName="Home"
-          screenOptions={{   //Global settings for all navigation screens across the app, if you use screenOptions prop.
-            tabBarActiveTintColor: '#054405', // Change the active icon color here
+          screenOptions={{
+            tabBarActiveTintColor: '#054405',
             tabBarStyle: { backgroundColor: '#fff' },
             tabBarLabelStyle: { fontSize: 12, fontFamily: 'Asap-Regular', marginBottom: 4 },
-            headerStyle: { backgroundColor: '#fff', height: 100, borderBottomWidth: 1, borderColor: '#ccc', elevation: 5, shadowColor : 'gray'},
+            headerStyle: { backgroundColor: '#fff', height: 100, borderBottomWidth: 1, borderColor: '#ccc', elevation: 5, shadowColor: 'gray' },
             headerStatusBarHeight: 50,
             headerTitleStyle: { fontSize: 28, fontFamily: 'Asap-SemiBold' },
           }}
         >
-              <Tab.Screen
+          <Tab.Screen
             name="Services"
             component={ServicesPage}
             options={{
               tabBarLabel: 'Services',
-              tabBarIcon: ({ color }) => <Ionicons name="hammer-outline" size={20} color={color} />, // Pass color prop to icon
-              headerStyle: { backgroundColor: '#F3F6FC', height: 100, borderBottomWidth: 1, borderColor: '#ccc', elevation: 0},
+              tabBarIcon: ({ color }) => <Ionicons name="hammer-outline" size={20} color={color} />,
+              headerStyle: { backgroundColor: '#F3F6FC', height: 100, borderBottomWidth: 1, borderColor: '#ccc', elevation: 0 },
               tabBarStyle: { backgroundColor: '#F3F6FC' },
             }}
           />
-           <Tab.Screen
+          <Tab.Screen
             name="Activity"
             component={ActivityPage}
             options={{
               tabBarLabel: 'Activity',
-              tabBarIcon: ({ color }) => <Ionicons name="receipt-outline" size={20} color={color} />, // Pass color prop to icon
+              tabBarIcon: ({ color }) => <Ionicons name="receipt-outline" size={20} color={color} />,
             }}
           />
           <Tab.Screen
@@ -65,34 +69,28 @@ export default function App() {
             component={HomeScreen}
             options={{
               tabBarLabel: 'Home',
-              tabBarIcon: ({ color }) => <Ionicons name="home-outline" size={20} color={color} />, // Pass color prop to icon
+              tabBarIcon: ({ color }) => <Ionicons name="home-outline" size={20} color={color} />,
               headerTitle: 'Arduiva',
             }}
           />
-            <Tab.Screen 
-          name = 'E_Pay'
-          component = {EPayPage}
-          options = {{
-            tabBarLabel: 'E-Pay',
-            tabBarIcon: ({ color }) => <Ionicons name="card-outline" size={20} color={color} />, // Pass color prop to icon
-          
-          }}
+          <Tab.Screen
+            name="E_Pay"
+            component={EPayPage}
+            options={{
+              tabBarLabel: 'E-Pay',
+              tabBarIcon: ({ color }) => <Ionicons name="card-outline" size={20} color={color} />,
+            }}
           />
-         
-      
           <Tab.Screen
             name="Profile"
             component={ProfilePage}
             options={{
               tabBarLabel: 'Profile',
-              tabBarIcon: ({ color }) => <Ionicons name="person-outline" size={20} color={color} />, // Pass color prop to icon
+              tabBarIcon: ({ color }) => <Ionicons name="person-outline" size={20} color={color} />,
             }}
           />
-        
         </Tab.Navigator>
-        
       </NavigationContainer>
-      
     </View>
   );
 }

@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 const PaymentOptions = () => {
   return (
     <View style={styles.paymentMethods}>
-      <Text style={styles.paymentTitle}>Funding Methods</Text>
+      <Text style={styles.paymentTitle}> Methods</Text>
       <TouchableOpacity style={styles.paymentOption}>
         <View style={styles.paymentOptionContent}>
         <MaterialIcons name="attach-money" size={24} color="#a5b4b4" />

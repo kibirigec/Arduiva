@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUser, faCog, faCreditCard, faUserCog, faGavel, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import DarkModeModal from '../components/modals/darkModeModal'; // Import the modal content
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const ProfilePage = () => {
-    const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
-    const [isModalVisible, setIsModalVisible] = useState(false);
+    const Stack = createNativeStackNavigator();  
 
-    const toggleModal = () => {
-        setIsModalVisible(!isModalVisible);
-    };
-
+    function MyStack() {
+        return (
+          <Stack.Navigator>
+            <Stack.Screen name="Settings" component={SettingsPage} />
+            <Stack.Screen name="Payment Methods" component={PaymentMethods} />
+            <Stack.Screen name="Manage Account" component={ManageAccount} />
+            <Stack.Screen name="Legal" component={LegalPage} />
+          </Stack.Navigator>
+        );
+      }
     return (
         <View style={styles.container}>
-            {/* Header Container */}
-            <TouchableOpacity onPress={toggleModal}>
+            <TouchableOpacity onPress={null}>
                 <View style={styles.headerContainer}>
                     <View style={styles.headerContent}>
                         <FontAwesomeIcon icon={faUser} size={20} color="#efa400" style={styles.icon} />
@@ -28,7 +31,6 @@ const ProfilePage = () => {
                 </View>
             </TouchableOpacity>
 
-            {/* Profile Info */}
             <View style={styles.profileInfo}>
                 <TouchableOpacity style={styles.infoItem}>
                     <View style={styles.infoContent}>
@@ -58,15 +60,6 @@ const ProfilePage = () => {
                     </View>
                     <FontAwesomeIcon icon={faAngleRight} size={20} color="#000" />
                 </TouchableOpacity>
-                <Modal visible={isModalVisible} animationType="slide">
-                    <DarkModeModal
-                        darkModeEnabled={isDarkModeEnabled}
-                        onDarkModeToggle={() => setIsDarkModeEnabled(!isDarkModeEnabled)}
-                    />
-                    <TouchableOpacity style={styles.closeModalButton} onPress={toggleModal}>
-                        <Text style={styles.closeModalButtonText}>Close</Text>
-                    </TouchableOpacity>
-                </Modal>
             </View>
         </View>
     );
