@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   gradientContainer: {
     borderRadius: 10,
     padding: 20,
-    width: '90%',
+    width: '95%',
     alignSelf: 'center',
     marginTop: 40,
     height: 200,
@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',   
     elevation: 8,
   },
   cardContainer: {

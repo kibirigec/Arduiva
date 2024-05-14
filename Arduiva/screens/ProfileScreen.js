@@ -3,6 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUser, faCog, faCreditCard, faUserCog, faGavel, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import DarkModeModal from '../components/modals/darkModeModal'; // Import the modal content
+import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+
+
+
 
 const ProfilePage = () => {
     const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false);
@@ -12,13 +17,21 @@ const ProfilePage = () => {
         setIsModalVisible(!isModalVisible);
     };
 
+    const navigation = useNavigation();
+    const goToSettings = () => {
+        navigation.navigate('Settings');
+    }
+    const goToPayments = () => {
+        navigation.navigate('Payments')
+    }
+
     return (
         <View style={styles.container}>
             {/* Header Container */}
             <TouchableOpacity onPress={toggleModal}>
                 <View style={styles.headerContainer}>
                     <View style={styles.headerContent}>
-                        <FontAwesomeIcon icon={faUser} size={20} color="#efa400" style={styles.icon} />
+                        <FontAwesomeIcon icon={faUser} size={26} color="#D1EDC0" style={styles.icon} />
                         <View style={styles.contactInfo}>
                             <Text style={styles.userName}>Kibirige Calvin</Text>
                             <Text style={styles.number}>+25675910888</Text>
@@ -30,17 +43,17 @@ const ProfilePage = () => {
 
             {/* Profile Info */}
             <View style={styles.profileInfo}>
-                <TouchableOpacity style={styles.infoItem}>
+                <TouchableOpacity style={styles.infoItem} onPress={goToSettings}>
                     <View style={styles.infoContent}>
                         <FontAwesomeIcon icon={faCog} size={20} color="#000" style={styles.icon} />
                         <Text style={styles.infoText}>Settings</Text>
                     </View>
                     <FontAwesomeIcon icon={faAngleRight} size={20} color="#000" />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.infoItem}>
+                <TouchableOpacity style={styles.infoItem} onPress ={goToPayments}>
                     <View style={styles.infoContent}>
                         <FontAwesomeIcon icon={faCreditCard} size={20} color="#000" style={styles.icon} />
-                        <Text style={styles.infoText}>Payments</Text>
+                        <Text style={styles.infoText}>Payment Methods</Text>
                     </View>
                     <FontAwesomeIcon icon={faAngleRight} size={20} color="#000" />
                 </TouchableOpacity>
