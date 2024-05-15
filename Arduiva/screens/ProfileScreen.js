@@ -72,10 +72,7 @@ const ProfilePage = () => {
                     <FontAwesomeIcon icon={faAngleRight} size={20} color="#000" />
                 </TouchableOpacity>
                 <Modal visible={isModalVisible} animationType="slide">
-                    <DarkModeModal
-                        darkModeEnabled={isDarkModeEnabled}
-                        onDarkModeToggle={() => setIsDarkModeEnabled(!isDarkModeEnabled)}
-                    />
+                  
                     <TouchableOpacity style={styles.closeModalButton} onPress={toggleModal}>
                         <Text style={styles.closeModalButtonText}>Close</Text>
                     </TouchableOpacity>

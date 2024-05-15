@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Animated } from 'react-native';
 import Modal from 'react-native-modal';
+import { Button } from 'react-native';
 
 const MechanicScreen = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -44,6 +45,7 @@ const MechanicScreen = () => {
             >
                 <View style={styles.modalContent}>
                     <Text>Bottom Sheet Content</Text>
+                    <Button title="Close" onPress={closeBottomSheet} />
                 </View>
             </Modal>
         </SafeAreaView>

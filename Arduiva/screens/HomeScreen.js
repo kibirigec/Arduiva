@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {React, useState} from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from @expo/vector-icons, but i dont need them
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
@@ -7,7 +7,9 @@ import { faBoltLightning, faCarBattery } from '@fortawesome/free-solid-svg-icons
 import { faGasPump } from '@fortawesome/free-solid-svg-icons';
 import { faTruckLoading } from '@fortawesome/free-solid-svg-icons';
 import { useNavigation } from '@react-navigation/native';
+import BottomSheet from '@gorhom/bottom-sheet';
 import { createStackNavigator } from '@react-navigation/stack';
+//import LocationUpdate from '../components/modals/LocationUpdate';
 //import MechanicScreen from './screens/MechanicScreen';
 
 
@@ -16,6 +18,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 const HomeScreen = () => {
     const name = 'Calvin'; // Define my name here, i like how it looks
     const currentLocation = 'Kyanja, Uganda'
+    const[modalVisible, setModalVisible] = useState(false)
+
 
    const navigation = useNavigation();
 
@@ -23,16 +27,21 @@ const HomeScreen = () => {
     function hasPressed(){
         console.log('pressed')
     }
-
+        const toggleLocation = () => {
+        //setModalVisible(!modalVisible);
+    }
     return (
         <View style={styles.container}>
                                   {/* HelloContainer*/}
             <View style={styles.helloContainer}>
                 <Text style={styles.helloText}><Text style = {{color: '#86868b'}}>Hello,</Text> {name}</Text>
-                <View style = {styles.locationContainer}>
+                <TouchableOpacity >
+                <View style = {styles.locationContainer} >
                 <Ionicons name="location" size={24} color="#161818" />
                 <Text style = {styles.locationText }>{currentLocation}</Text>
                 </View>
+
+                </TouchableOpacity>
             </View>
             {/* MainContainer*/}
             <View style={styles.mainContainer}>
@@ -79,6 +88,16 @@ const HomeScreen = () => {
 
                 </TouchableOpacity>
                 <Text style = {styles.VersionNumber}>Arduiva Beta 0.0.1</Text>
+                <Modal visible={modalVisible} transparent={false} style={styles.modal} animationType='slide'>
+                <View style={styles.modalContainer}> 
+                    
+                    <View>
+                       
+                    </View>
+                    
+                </View>
+            </Modal>
+
 
             </View>
         </View>
@@ -159,7 +178,25 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'Asap-Medium',
         color: 'black'
-    }
-});
+    },
+    modal: {
+        //flex: 1,
+        backgroundColor: 'red', // Background color with transparency
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalContainer: {
+        backgroundColor: '#f8fff1', // Background color of the modal content
+        padding: 20,
+        borderRadius: 16,
+        flex: 1,
+        marginHorizontal: 8,
+        borderWidth: 1,
+        marginBottom: 8,
+        },
+    });
+
+    
+      
 
 export default HomeScreen;

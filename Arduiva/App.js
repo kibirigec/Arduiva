@@ -8,12 +8,14 @@ import HomeScreen from './screens/HomeScreen';
 import ActivityPage from './screens/ActivityPage';
 import ServicesPage from './screens/ServicesPage';
 import ProfileScreen from './screens/ProfileScreen';
-import SettingsScreen from './screens/SettingsScreen';
-import PaymentOptionsPage from './screens/PaymentsMethods';
+import SettingsScreen from './secodary screens/SettingsScreen';
+import PaymentOptionsPage from './secodary screens/PaymentsMethods';
 import EPayPage from './screens/EPayPage';
-import MechanicScreen from './screens/MechanicScreen';
+import MechanicScreen from './secodary screens/MechanicScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -106,6 +108,7 @@ export default function App() {
   }
 
   return (
+    <Provider store = {store}> 
     <View style={styles.container}>
       <StatusBar style="auto" />
       <NavigationContainer>
@@ -128,6 +131,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </View>
+    </Provider>
   );
 }
 
