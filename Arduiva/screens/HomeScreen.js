@@ -1,24 +1,25 @@
-import {React, useState} from 'react';
+//import {React, useState} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from @expo/vector-icons, but i dont need them
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
-import { faBoltLightning, faCarBattery } from '@fortawesome/free-solid-svg-icons';
+import { faRobot } from '@fortawesome/free-solid-svg-icons';
+import { faAppleWhole, faBoltLightning, faCarBattery } from '@fortawesome/free-solid-svg-icons';
 import { faGasPump } from '@fortawesome/free-solid-svg-icons';
 import { faTruckLoading } from '@fortawesome/free-solid-svg-icons';
 import { useNavigation } from '@react-navigation/native';
-import BottomSheet from '@gorhom/bottom-sheet';
+import { BottomSheet } from '@gorhom/bottom-sheet';
+//import BottomSheet from '@gorhom/bottom-sheet';
 import { createStackNavigator } from '@react-navigation/stack';
 //import LocationUpdate from '../components/modals/LocationUpdate';
 //import MechanicScreen from './screens/MechanicScreen';
 
 
-
-
+//i
 const HomeScreen = () => {
     const name = 'Calvin'; // Define my name here, i like how it looks
     const currentLocation = 'Kyanja, Uganda'
-    const[modalVisible, setModalVisible] = useState(false)
+    //const[modalVisible, setModalVisible] = useState(false)
 
 
    const navigation = useNavigation();
@@ -64,6 +65,12 @@ const HomeScreen = () => {
 
                         <Text style={[styles.gridText, {color: '#0a99f5'}, {fontSize: 17}]}>Mechanic</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity>
+                        <View style = {styles.aiChat}>
+                            <FontAwesomeIcon icon = {faRobot} size = {24} color = '#86868b' />
+
+                        </View>
+                        </TouchableOpacity>
                 {/* blehh*/}
                 </View>
                 <View style={styles.gridContainer}>
@@ -82,21 +89,17 @@ const HomeScreen = () => {
             <View style = {{flexDirection:'column'}}>
                 <TouchableOpacity>
                 <View style = {styles.contactContainer}>
-                    <Text style = {styles.contactText}>Emergency Contacts</Text>
+                    <Text style = {styles.contactText}>Tips</Text>
                 </View>
                 
 
                 </TouchableOpacity>
                 <Text style = {styles.VersionNumber}>Arduiva Beta 0.0.1</Text>
-                <Modal visible={modalVisible} transparent={false} style={styles.modal} animationType='slide'>
-                <View style={styles.modalContainer}> 
-                    
-                    <View>
-                       
+              <BottomSheet>
+                <View>
+                    <Text>Hello</Text>
                     </View>
-                    
-                </View>
-            </Modal>
+                </BottomSheet>
 
 
             </View>
@@ -109,6 +112,16 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         paddingHorizontal: 16,
+    },
+    aiChat : {
+        borderRadius: 100,
+        borderWidth:1,
+        borderColor: '#008000',
+        position: 'absolute',
+        bottom: 108, 
+        right: 10,
+        padding: 10,
+
     },
     helloContainer: {
         marginTop: 20,
