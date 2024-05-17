@@ -8,11 +8,9 @@ import { faAppleWhole, faBoltLightning, faCarBattery } from '@fortawesome/free-s
 import { faGasPump } from '@fortawesome/free-solid-svg-icons';
 import { faTruckLoading } from '@fortawesome/free-solid-svg-icons';
 import { useNavigation } from '@react-navigation/native';
-import { BottomSheet } from '@gorhom/bottom-sheet';
-//import BottomSheet from '@gorhom/bottom-sheet';
+
 import { createStackNavigator } from '@react-navigation/stack';
-//import LocationUpdate from '../components/modals/LocationUpdate';
-//import MechanicScreen from './screens/MechanicScreen';
+
 
 
 //i
@@ -36,7 +34,7 @@ const HomeScreen = () => {
                                   {/* HelloContainer*/}
             <View style={styles.helloContainer}>
                 <Text style={styles.helloText}><Text style = {{color: '#86868b'}}>Hello,</Text> {name}</Text>
-                <TouchableOpacity >
+                <TouchableOpacity onPress = {() => navigation.navigate('Location')}>
                 <View style = {styles.locationContainer} >
                 <Ionicons name="location" size={24} color="#161818" />
                 <Text style = {styles.locationText }>{currentLocation}</Text>
@@ -95,12 +93,8 @@ const HomeScreen = () => {
 
                 </TouchableOpacity>
                 <Text style = {styles.VersionNumber}>Arduiva Beta 0.0.1</Text>
-              <BottomSheet>
-                <View>
-                    <Text>Hello</Text>
-                    </View>
-                </BottomSheet>
-
+            
+                
 
             </View>
         </View>
@@ -119,7 +113,7 @@ const styles = StyleSheet.create({
         borderColor: '#008000',
         position: 'absolute',
         bottom: 108, 
-        right: 10,
+        right: 14.5,
         padding: 10,
 
     },
